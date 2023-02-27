@@ -1,0 +1,7 @@
+folha/
+/venv
+**/__pycache__
+.env
+db.sqlite3
+*.DS_Store
+*.vscode
