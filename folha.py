@@ -86,6 +86,9 @@ def desconto_irpf(salario, valor_inss, qtde_dependente = 0):
     desconto_irpf = (base_ir * (aliquota/100)) - deducao
     return desconto_irpf, aliquota, deducao
 
+def salario_liquido (salario, inss, iprf, adiantamento = 0):
+    salario_liquido = salario - inss - iprf - adiantamento
+    return f'Seu salário líquido é R$ {salario_liquido}, sendo descontado a título de INSS R$ {inss} e IRPF R$ {iprf}, totalizando em desconto R$ {inss + iprf}'
 
 # base_irrf = salario - desconto_inss
 
