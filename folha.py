@@ -69,6 +69,23 @@ def desconto_inss(salario):
     return desconto_inss, faixa_salarial
 
 # Calculando IRRF
+def desconto_irpf(salario, valor_inss, qtde_dependente = 0):
+    valor_dependente = 189.59 * qtde_dependente
+    base_ir = salario - valor_inss - valor_dependente
+    if base_ir < 1903.98:
+        aliquota, deducao = 0, 0
+    elif base_ir > 1903.98 and base_ir <= 2826.65:
+        aliquota, deducao = 7.5, 142.80
+    elif base_ir > 2826.65 and base_ir <= 3751.06:
+        aliquota, deducao = 15, 354.80
+    elif base_ir > 3751.06 and base_ir <= 4664.68:
+        aliquota, deducao = 22.50, 636.13
+    else:
+        aliquota, deducao = 27.50, 869.36
+    
+    desconto_irpf = (base_ir * (aliquota/100)) - deducao
+    return desconto_irpf, aliquota, deducao
+
 
 # base_irrf = salario - desconto_inss
 
